@@ -16,12 +16,13 @@ fn main() {
 
     println!("median: {}", median);
 
-    let string = String::from("first");
+    let string = String::from("Solana");
     let converted_str = convert_to_pig_latin(&string);
 
     println!("original text: {} - pig latin text: {}", string, converted_str);
 
-    let string = String::from("안irst");
+    let string = String::from("안olana");
     let converted_str = safe_convert_to_pig_latin(&string);
+    
     println!("[SAFE] original text: {} - pig latin text: {}", string, converted_str);
 }
