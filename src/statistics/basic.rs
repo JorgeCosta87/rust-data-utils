@@ -30,6 +30,10 @@ pub fn median(data: &[i32]) -> i32 {
 }
 
 pub fn moda(data: &[i32]) -> i32 {
+    if data.is_empty() {
+        return 0;
+    }
+    
     let mut map: HashMap<i32, i32> = HashMap::new();
 
     for v in data.iter() {
@@ -41,4 +45,27 @@ pub fn moda(data: &[i32]) -> i32 {
         .max_by_key(|(_, count)| *count)
         .map(|(v, _)| v)
         .unwrap()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_mean() {
+        assert_eq!(mean(&vec![1, 2, 3, 4, 5]), 3.0);
+        assert_eq!(mean(&vec![]), 0.0);
+    }
+
+    #[test]
+    fn test_median() {
+        assert_eq!(median(&vec![1, 2, 3, 4, 5]), 3);
+        assert_eq!(median(&vec![1, 2, 3, 4]), 2);
+    }
+
+    #[test]
+    fn test_moda() {
+        assert_eq!(moda(&vec![1, 2, 2, 3]), 2);
+        assert_eq!(moda(&vec![]), 0);
+    }
 }
